@@ -89,6 +89,10 @@ def main(pcap_file: str, ssid_file: str | None) -> None:
         except (UnicodeDecodeError, AttributeError, ValueError):
             return
 
+        # Check if SSID is non-empty but consists entirely of null bytes, indicating a hidden SSID, and just show its length
+        if ssid and not ssid.strip('\x00'):
+            ssid = f"<length: {len(ssid)}>"
+
         # Skip if SSID is invalid or not targeted
         if not ssid or (target_ssids and ssid not in target_ssids):
             return
