@@ -188,7 +188,7 @@ def main(pcap_file: str, ssid_file: str | None) -> None:
             for status in ssid_group[ssid]:
                 print(f"   {status}")
         else:
-            print(f"  {RED}not found in capture{ENDC}")
+            print(f"   {RED}not found in capture{ENDC}")
 
         print()  # Blank line separator
 
